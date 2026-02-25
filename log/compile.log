@@ -1,0 +1,32 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v" into library work
+INFO: [VRFC 10-311] analyzing module Whack
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/TickCounterRst.v" into library work
+INFO: [VRFC 10-311] analyzing module TickCounterRst
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/SevenSegmentDecoder.v" into library work
+INFO: [VRFC 10-311] analyzing module SevenSegmentDecoder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/CounterBCD_4digit_display.v" into library work
+INFO: [VRFC 10-311] analyzing module CounterBCD_4digit_display
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/Debouncer.v" into library work
+INFO: [VRFC 10-311] analyzing module Debouncer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/TickCounter.v" into library work
+INFO: [VRFC 10-311] analyzing module TickCounter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/CountdownTickCounter.v" into library work
+INFO: [VRFC 10-311] analyzing module CountdownTickCounter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/RCTickCounter.v" into library work
+INFO: [VRFC 10-311] analyzing module RCTickCounter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/ButtonClick.v" into library work
+INFO: [VRFC 10-311] analyzing module ButtonClick
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/ResetColors.v" into library work
+INFO: [VRFC 10-311] analyzing module ResetColors
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/rtl/RNG.v" into library work
+INFO: [VRFC 10-311] analyzing module RNG
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/bench/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/bench/ClockGen.v" into library work
+INFO: [VRFC 10-311] analyzing module ClockGen
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/bench/tb_Whack.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_Whack
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/marco/Desktop/LAE/Simon/cores/PLL/PLL_sim_netlist.v" into library work
+INFO: [VRFC 10-311] analyzing module PLL
+INFO: [VRFC 10-311] analyzing module PLLPLL_clk_wiz
+INFO: [VRFC 10-311] analyzing module glbl

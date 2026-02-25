@@ -1,0 +1,106 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Feb 25 12:49:30 2026
+# Process ID: 30484
+# Current directory: C:/Users/marco/Desktop/LAE/Simon
+# Command line: vivado.exe -mode gui -source scripts/common/init.tcl -source scripts/build/build.tcl -log log/build.log -nojournal -verbose -notrace
+# Log file: C:/Users/marco/Desktop/LAE/Simon/log/build.log
+# Journal file: 
+#-----------------------------------------------------------
+start_gui
+source scripts/common/init.tcl -notrace
+
+Sourcing init file C:/Users/marco/Desktop/LAE/Simon/scripts/common/init.tcl
+
+source scripts/build/build.tcl -notrace
+Start at: 02/25/2026 12:49:52
+
+INFO: [TCL] Running C:/Users/marco/Desktop/LAE/Simon/scripts/build/import.tcl
+
+INFO: Target Xilinx device: xc7a35ticsg324-1L
+INFO: Target external Quad SPI Flash memory: mt25ql128-spi-x1_x2_x4
+
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/OPT~1/Xilinx/Vivado/2020.1/data/ip'.
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 1018.941 ; gain = 0.000
+INFO: [Coretcl 2-1500] The part has been set to 'xc7a35ticsg324-1L' for the current project only. Run set_part -help for more details. To evaluate different speed grades in the current design, use the set_speed_grade command, or use the open_checkpoint -part command to change the part used by an existing checkpoint design.
+
+**INFO: Top-level RTL module is Whack
+
+
+-- Parsing RTL sources ...
+
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/TickCounterRst.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/SevenSegmentDecoder.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/CounterBCD_4digit_display.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/Debouncer.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/TickCounter.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/CountdownTickCounter.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/RCTickCounter.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/ButtonClick.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/ResetColors.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/rtl/RNG.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/bench/glbl.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/bench/ClockGen.v ...
+Parsing Verilog source file C:/Users/marco/Desktop/LAE/Simon/bench/tb_Whack.v ...
+
+
+-- Parsing IP sources ...
+
+
+Loading Xilinx Core Instance (XCI) IP configuration file C:/Users/marco/Desktop/LAE/Simon/cores/PLL/PLL.xci ...
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# FLOW INFO: RTL ELABORATION
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+
+
+INFO: [TCL] Elaborating RTL design...
+
+Command: synth_design -name rtl_1 -top Whack -part xc7a35ticsg324-1L -flatten_hierarchy none -rtl -rtl_skip_ip -rtl_skip_constraints
+Starting synth_design
+INFO: [Device 21-403] Loading part xc7a35ticsg324-1L
+ERROR: [Synth 8-2715] syntax error near == [C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v:141]
+ERROR: [Synth 8-2715] syntax error near end [C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v:143]
+INFO: [Synth 8-2350] module Whack ignored due to previous errors [C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v:12]
+Failed to read verilog 'C:/Users/marco/Desktop/LAE/Simon/rtl/Whack.v'
+6 Infos, 0 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+
+ **ERROR: FPGA implementation could not finish successfully. Force an exit now. (ERROR: [Vivado_Tcl 4-5] Elaboration failed - please see the console for details
+)
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 25 12:51:18 2026...

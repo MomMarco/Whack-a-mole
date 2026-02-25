@@ -1,0 +1,73 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Feb 25 12:54:42 2026
+# Process ID: 24144
+# Current directory: C:/Users/marco/Desktop/LAE/Simon
+# Command line: vivado.exe -mode gui -source scripts/common/init.tcl -source scripts/install/install.tcl -notrace -log log/install.log -nojournal
+# Log file: C:/Users/marco/Desktop/LAE/Simon/log/install.log
+# Journal file: 
+#-----------------------------------------------------------
+start_gui
+source scripts/common/init.tcl -notrace
+
+Sourcing init file C:/Users/marco/Desktop/LAE/Simon/scripts/common/init.tcl
+
+source scripts/install/install.tcl -notrace
+
+INFO: [TCL] Running C:/Users/marco/Desktop/LAE/Simon/scripts/install/install.tcl
+
+INFO: Target Xilinx device: xc7a35ticsg324-1L
+INFO: Target external Quad SPI Flash memory: mt25ql128-spi-x1_x2_x4
+
+INFO: [TCL] Default program file work/build/outputs/Whack.bit assumed for device programming.
+
+
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/OPT~1/Xilinx/Vivado/2020.1/data/ip'.
+open_hw_manager: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 1195.988 ; gain = 0.000
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.1
+  **** Build date : May 27 2020 at 20:24:38
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+****** Xilinx cs_server v2020.1.0
+  **** Build date : May 14 2020-03:10:29
+    ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1195.988 ; gain = 0.000
+Current hardware server set to localhost:3121
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210319755343A
+open_hw_target: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2009.867 ; gain = 813.879
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+
+
+INFO: [TCL] Current hardware device set to xc7a35t_0
+
+
+INFO: [Labtools 27-3164] End of startup status: HIGH
+INFO: [Labtoolstcl 44-464] Closing hw_target localhost:3121/xilinx_tcf/Digilent/210319755343A
+
+
+
+====================================
+   FPGA successfully programmed !   
+====================================
+
+INFO: [TCL] Total elapsed-time for C:/Users/marco/Desktop/LAE/Simon/scripts/install/install.tcl: 0.43 minutes
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 25 12:55:48 2026...
