@@ -96,7 +96,8 @@ SIM_TOP_MODULE := tb_Whack
 ## specify RTL sources by hand (more in general can be Verilog + VHDL code)
 ##
 
-RTL_VLOG_SOURCES := $(RTL_DIR)/Whack.v $(RTL_DIR)/TickCounterRst.v $(RTL_DIR)/SevenSegmentDecoder.v $(RTL_DIR)/CounterBCD_4digit_display.v $(RTL_DIR)/Debouncer.v $(RTL_DIR)/TickCounter.v $(RTL_DIR)/CountdownTickCounter.v $(RTL_DIR)/RCTickCounter.v $(RTL_DIR)/ButtonClick.v $(RTL_DIR)/ResetColors.v $(RTL_DIR)/RNG.v
+RTL_VLOG_SOURCES := $(RTL_DIR)/Whack.v $(RTL_DIR)/TickCounterRst.v $(RTL_DIR)/SevenSegmentDecoder.v $(RTL_DIR)/CounterBCD-2digit-display.v $(RTL_DIR)/Debouncer.v $(RTL_DIR)/TickCounter.v $(RTL_DIR)/CountdownTickCounter.v $(RTL_DIR)/RCTickCounter.v $(RTL_DIR)/ButtonClick.v $(RTL_DIR)/ResetColors.v $(RTL_DIR)/RNG.v
+## $(RTL_DIR)/FSM.v
 ## $(RTL_DIR)/Countdown.v $(RTL_DIR)/Counter.v 
 #RTL_VLOG_SOURCES := $(RTL_DIR)/uart_tx_FSM.v $(RTL_DIR)/TickCounter.v $(RTL_DIR)/BaudGen.v
 
