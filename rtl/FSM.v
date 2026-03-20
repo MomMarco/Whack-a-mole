@@ -1,103 +1,132 @@
-module FSM #(parameter [7:0] SEED = 8'hFF)(
+// Whack-a-mole: a simple game of reflexes implemented on FPGA
+// 
+//
+// Marco Mosagna - marco.mosagna@edu.unito.it
+// 2026
+//
+// FINITE STATE MACHINE
 
-   input  wire clk,
-   input  wire rst,            // synchronous rst, active-high
-   input  wire start,            // start button
-   input reg [3:0] button,       // buttons
-   output reg [3:0] color,       // Moles
-   output reg [6:0] Tsegment,    // 7-segment for the Timer
-   output reg [6:0] Ssegment,     // 7-segment for the Score
-   output reg [3:0] anode   
-   ) ;
+`timescale 1ns / 100ps
 
+module FSM (
 
+   input  wire ST,
+   input  wire RESET,                // Asynchronous reset, active-high
+   input  wire START,              // START latch
+   input  wire CT,
+   input reg [1:0] STATE,          // Used in simulations, to see the State in the Testbench waveforms page.
+   output reg GE,
+   output reg [7:0] Timer
+   ) ;   
 
-
-   always @(posedge clk) begin
+  
+   // STATE DEFINITION 
+   ////////////////////////////////////////////
+   parameter [1:0] S0 = 2'b00 ;   //IDLE    ///
+   parameter [1:0] S1 = 2'b01 ;   //PLAY    ///
+   parameter [1:0] S2 = 2'b10 ;   //END     ///
+   parameter [1:0] S3 = 2'b11 ;   //PAUSE   ///
+   ////////////////////////////////////////////   
+   
+   always @(posedge ST) begin
      
-	 if(rst) begin
+     
+      if(~RESET) begin                              //Asynchronous Reset: if false, Return to State 0, Return Score to 0 and Countdown to 10, disable Tick counters for Leds and Countdown, reset the moles and turn the displays off.
          STATE <= S0 ;
-		 SCORE <= 12'b0000_0000_0000 ;
-		 count <= 8'b0000_0000 ;
-		 
-     end
+         GE <= 1'b0;
+      end
 
-	 
-	 else begin 
+      else begin 
 
-	    if(~pll_locked) begin
 
-           q <= SEED ;
-	    end 
+      case(STATE)                              //Begin Case definition
+ 
+         //IDLE State: Wait for START Switch On to switch to PLAY.
+         /////////////////////////////////////////////////////////////////////////////////////////
+          S0: begin                                                                            ///
+                                                                                               ///
+             count <= 8'b0110_0000 ;              //Here the time lenght of the game is set    ///
+                                                                                               ///
+             if(START)begin                                                                    ///
+                                                                                               ///
+                STATE = S1;                                                                    ///
+                GE = 1'b1;                                                                     ///
+             end //if                                                                          ///
+                                                                                               ///
+             else STATE= S0;                                                                   ///
+                                                                                               ///
+         end //S0                                                                              ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        
+        //PLAY State: the game is ON for a length of a set number of  CT. The Leds are switched every LT. When the time is over, switch to END state. If START is switched off, go to PAUSE STATE
+        //////////////////////////////////////////////////////////////////////////////////////////   
+         S1: begin                                                                             ///
+                                                                                               /// 
+            if (CT) begin                                                                      ///
+                                                                                               ///	    
+               if(count[7:4]>=4'b0001 && count[3:0]==4'b0000) begin                            ///
+                                                                                               ///
+                  count[7:4] = count[7:4] - 4'b0001;                                           ///
+                  count[3:0]=4'b1001;                                                          ///
+                                                                                               ///
+               end //if                                                                        ///
+                                                                                               ///
+               else count[3:0] =count[3:0] - 4'b0001;                                          ///
+                                                                                               ///
+            end //if                                                                           ///
+                                                                                               ///
+            if (count == 4'b0000) begin                                                        ///
+                                                                                               ///
+               STATE= S2;                                                                      ///
+               GE = 1'b0;                                                                      ///
+                                                                                               ///
+            end //if                                                                           ///
+                                                                                               ///
+            else if (~START) begin                                                             ///
+                                                                                               ///			
+               STATE= S3;                                                                      ///
+               GE = 1'b0;                                                                      ///
+                                                                                               ///
+            end //if                                                                           ///
+                                                                                               ///
+  	        else STATE = S1;	                                                               ///
+            	                                                                               ///
+         end //S1                                                                              ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        //END State: Display the Score, time at 0, until the START Switch is pulled off
+        //////////////////////////////////////////////////////////////////////////////////////////
+         S2: begin                                                                             ///                      
+                                                                                               ///
+            if (~START)begin                                                                   ///
+                                                                                               ///
+               STATE = S0;                                                                     ///
+                                                                                               ///	        
+            end //if                                                                           ///
+                                                                                               ///			
+            else STATE = S2;                                                                   ///
+                                                                                               ///
+          end //S2                                                                             ///
+        ////////////////////////////////////////////////////////////////////////////////////////// 
+
+        //PAUSE State: Display the Score, time at last value, until the START Switch is pulled on
+        //////////////////////////////////////////////////////////////////////////////////////////   
+         S3: begin                                                                             ///
+                                                                                               ///		    
+            if(START)begin                                                                     ///
+                                                                                               ///
+               STATE = S1;                                                                     ///
+               GE = 1'b1;                                                                      ///
+                                                                                               ///
+            end //if                                                                           ///
+                                                                                               ///
+         end //S3                                                                              ///
+        //////////////////////////////////////////////////////////////////////////////////////////
 		
-	    case(STATE)
-     
-    	 S0: begin
-	        SCORE= 12'b0000_0000_0000;
-	        color = 4'b0000;
-			count <= 8'b0001_0000 ;
-			
-	        if(start==1'b1) begin
-	           
-		       
-			   
-		       STATE = S1;
-	        end
-	  
-	        else begin
-               count <= 8'b0001_0000;
-   	           STATE= S0;
-	        end
-         end //S0
+        endcase //STATE
    
-         S1: begin
-      
-		 
-		 if(RC_Clk_div)begin
-		 
-			
-			color[3] <= q[3];
-		    color[2] <= q[2];
-		    color[1] <= q[1];
-		    color[0] <= q[0];
-			   
-	        end
-		 
-		 if (CD_Clk_div) begin
-		   
-			
-			if(count[7:4]==4'b0001) begin
-			   count[7:4] = count[7:4] - 4'b0001;
-			   count[3:0]=4'b1001;
-			end
-			
-			else count[3:0] =count[3:0] - 4'b0001;
-     			
-	     end 
+      end //else 
 	  
-	     if (count == 4'b0000) begin
-		 STATE= S2;
-		 color <= 4'b0000;
-		 end  
-  	     else STATE = S1;	
+   end //always
 
-	          
-	 
-         end //S1
-   
-         S2: begin
-		    
-		
-		    
-	        if (start == 1'b0)begin
-	           STATE = S0;
-	        end
-	        else STATE = S2;
-     	  
-          end
-        endcase
-   
-   end
-   end
-   
 endmodule

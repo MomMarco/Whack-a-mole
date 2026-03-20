@@ -28,28 +28,23 @@ module SevenSegmentDecoder (
 
    // you can decide to tie-high or tie-down the unused decimal point (DP)
    assign DP = 1'b0 ;
-   //assign DP = 1'b1 ;
 
-   //
-   // **DEBUG: 7-segments display using logic constants
-   //                                                     //a b c d e f g
-   //assign {segA, segB, segC, segD, segE, segF, segG} = 7'b0_0_1_0_0_1_0 ;   // direct assignment of LED controls
 
 
    always @(*) begin
       if(rst) begin
-	     segA=1'b1;
-		 segB=1'b1;
-		 segC=1'b1;
-		 segD=1'b1;
-         segE=1'b1;
-		 segF=1'b1;
-		 segG=1'b1;
+	     segA<=1'b1;
+		 segB<=1'b1;
+		 segC<=1'b1;
+		 segD<=1'b1;
+         segE<=1'b1;
+		 segF<=1'b1;
+		 segG<=1'b1;
 	  end
       else begin
          case( BCD[3:0] )
 /*                                                                  //  abcdefg
-            4'b0000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1111110 ;  //  0            COMMON ANODE
+            4'b0000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1111110 ;  //  0            COMMON CATHODE
             4'b0001  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0110000 ;  //  1
             4'b0010  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1101101 ;  //  2
             4'b0011  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1111001 ;  //  3
@@ -60,7 +55,7 @@ module SevenSegmentDecoder (
             4'b1000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1111111 ;  //  8
             4'b1001  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1111011 ;  //  9
 */			
-			4'b0000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000001 ;  //  0            COMMON CATHODE
+			4'b0000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000001 ;  //  0            COMMON ANODE
             4'b0001  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b1001111 ;  //  1
             4'b0010  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0010010 ;  //  2
             4'b0011  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000110 ;  //  3
@@ -70,7 +65,7 @@ module SevenSegmentDecoder (
             4'b0111  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0001111 ;  //  7
             4'b1000  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000000 ;  //  8
             4'b1001  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000100 ;  //  9
-
+            4'b1001  :  {segA, segB, segC, segD, segE, segF, segG} = 7'b0000100 ;  //  
 
          endcase
       end //else

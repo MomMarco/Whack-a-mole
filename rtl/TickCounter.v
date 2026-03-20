@@ -10,13 +10,13 @@
 `timescale 1ns / 100ps
 
 
-//module TickCounter #(parameter integer MAX = 10) (           // 100 ns SIMULATION default is ~9.6 kHz as for UART baud-rate
-module TickCounter #(parameter integer MAX = 1000000) (      //  10 ms PRACTICE default is ~9.6 kHz as for UART baud-rate
+module TickCounter #(parameter integer MAX = 5) (           // 100 ns SIMULATION default is ~9.6 kHz as for UART baud-rate
+//module TickCounter #(parameter integer MAX = 1000000) (      //  10 ms PRACTICE default is ~9.6 kHz as for UART baud-rate
 
    input  wire clk,      // assume 100 MHz input clock
    input wire en,
    
-   output reg  tick      // single clock-pulse input
+   output reg  tick      // single clock-pulse output
 
    ) ;
 

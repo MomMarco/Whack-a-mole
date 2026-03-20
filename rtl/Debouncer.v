@@ -22,8 +22,9 @@ module Debouncer (
    ////////////////////////////////////////
 
    wire enable ;
-
-   TickCounter #(.MAX(50000)) TickCounter_inst (.clk(clk), .tick(enable)) ;   // 0.5 kHz clock-enable
+   
+   TickCounter #(.MAX(100000000)) TickCounter_inst (.clk(clk), .tick(enable)) ;   // 1 Hz clock-enable. REALLY SLOW DEBOUNCER
+   //TickCounter #(.MAX(50000)) TickCounter_inst (.clk(clk), .tick(enable)) ;   // 0.5 kHz clock-enable
    //TickCounter #(.MAX(100000)) TickCounter_inst (.clk(clk), .tick(enable)) ;   // 1 kHz clock-enable
 
 
